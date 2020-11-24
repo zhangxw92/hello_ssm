@@ -3,14 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+       https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--扫描所有的包排除Controller-->
-    <context:component-scan base-package="com.athome" use-default-filters="true">
+    <context:component-scan base-package="com.athome">
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller"></context:exclude-filter>
     </context:component-scan>
@@ -35,16 +34,13 @@
     <tx:annotation-driven transaction-manager="dataSourceTransactionManager"></tx:annotation-driven>
 
     <!--配置SqlSessionFactory,加载Mybatis的全局配置文件及扫描mapper文件-->
-    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean class="org.apache.ibatis.session.SqlSessionFactory">
         <property name="dataSource" ref="dataSource"></property>
         <!--加载Mybatis全局配置文件-->
         <property name="configLocation" value="classpath:MybatisConfig.xml"></property>
         <!--扫描mapper文件-->
         <property name="mapperLocations" value="classpath:mappers/*.xml"></property>
     </bean>
-
-    <!--扫描所有的mapper接口，让mapp文件能自动注入，重要！！！-->
-    <mybatis-spring:scan base-package="com.athome.dao"></mybatis-spring:scan>
 
     <!--开启AOP动态代理功能-->
     <aop:aspectj-autoproxy/>

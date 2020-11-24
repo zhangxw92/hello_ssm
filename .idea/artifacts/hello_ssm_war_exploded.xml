@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="hello_ssm:war exploded">
-    <output-path>$PROJECT_DIR$/target/hello_ssm</output-path>
+    <output-path>$PROJECT_DIR$/../hello_ssm/target/hello_ssm</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -13,6 +13,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.47" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.1.10" />
@@ -34,7 +35,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/hello_ssm/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/../hello_ssm/target/hello_ssm/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="hello_ssm/web/Web" />
     </root>
