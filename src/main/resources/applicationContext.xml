@@ -9,43 +9,50 @@
        http://www.springframework.org/schema/context
        https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
-    <!--扫描所有的包排除Controller-->
-    <context:component-scan base-package="com.athome" use-default-filters="true">
-        <context:exclude-filter type="annotation"
-                                expression="org.springframework.stereotype.Controller"></context:exclude-filter>
-    </context:component-scan>
+  <!--扫描所有的包排除Controller-->
+  <context:component-scan base-package="com.athome" use-default-filters="true">
+    <context:exclude-filter type="annotation"
+                            expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+  </context:component-scan>
 
-    <!--加载数据库配置文件-->
-    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+  <!--开启AOP动态代理功能-->
+  <!--有一个proxy-target-class属性，默认为false，表示使用jdk动态代理织入增强，
+  当配为<aop:aspectj-autoproxy poxy-target-class="true"/>时，
+  表示使用CGLib动态代理技术织入增强。
+  不过即使proxy-target-class设置为false，如果目标类没有声明接口，则spring将自动使用CGLib动态代理。-->
+  <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
 
-    <!--配置数据源-->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="driver" value="${jdbc.driver}"></property>
-        <property name="url" value="${jdbc.url}"></property>
-        <property name="username" value="${jdbc.username}"></property>
-        <property name="password" value="${jdbc.password}"></property>
-    </bean>
+  <!--加载数据库配置文件-->
+  <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
 
-    <!--配置事务管理器-->
-    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
+  <!--配置数据源-->
+  <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+    <!--容易写错的地方！！！-->
+    <property name="driverClassName" value="${jdbc.driver}"></property>
 
-    <!--加载事务驱动-->
-    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"></tx:annotation-driven>
+    <property name="url" value="${jdbc.url}"></property>
+    <property name="username" value="${jdbc.username}"></property>
+    <property name="password" value="${jdbc.password}"></property>
+  </bean>
 
-    <!--配置SqlSessionFactory,加载Mybatis的全局配置文件及扫描mapper文件-->
-    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"></property>
-        <!--加载Mybatis全局配置文件-->
-        <property name="configLocation" value="classpath:MybatisConfig.xml"></property>
-        <!--扫描mapper文件-->
-        <property name="mapperLocations" value="classpath:mappers/*.xml"></property>
-    </bean>
+  <!--配置事务管理器-->
+  <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"></property>
+  </bean>
 
-    <!--扫描所有的mapper接口，让mapp文件能自动注入，重要！！！-->
-    <mybatis-spring:scan base-package="com.athome.dao"></mybatis-spring:scan>
+  <!--加载事务驱动-->
+  <tx:annotation-driven transaction-manager="dataSourceTransactionManager"></tx:annotation-driven>
 
-    <!--开启AOP动态代理功能-->
-    <aop:aspectj-autoproxy/>
+  <!--配置SqlSessionFactory,加载Mybatis的全局配置文件及扫描mapper文件-->
+  <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource"></property>
+    <!--加载Mybatis全局配置文件-->
+    <property name="configLocation" value="classpath:MybatisConfig.xml"></property>
+    <!--扫描mapper文件-->
+    <property name="mapperLocations" value="classpath:mappers/*.xml"></property>
+  </bean>
+
+  <!--扫描所有的mapper接口，让mapp文件能自动注入，重要！！！-->
+  <mybatis-spring:scan base-package="com.athome.dao"></mybatis-spring:scan>
+
 </beans>

@@ -1,9 +1,12 @@
 package com.athome.service.impl;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.athome.dao.BlogDao;
 import com.athome.entity.Blog;
 import com.athome.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,4 +25,5 @@ public class BlogServiceImpl implements BlogService {
     public Blog getBlog(Integer id) {
         return blogDao.getBlog(id);
     }
+
 }
