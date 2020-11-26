@@ -45,6 +45,19 @@
     <!--第三顺位是filter-->
     <!--最后是servlet init-param中设置Spirngmvc的配置文件是因为伴随着servlet的加载而加载-->
 
+    <!--增加编码过滤器-->
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <!--浏览器form表单只支持Get和POST请求，而Delete、Put等method并不支持。
     Spring3.0添加了过滤器HiddenHttpMethodFilter，
     可以将这些请求转换为标准的http方法，使得支持GET、POST、PUT和DELETE请求-->

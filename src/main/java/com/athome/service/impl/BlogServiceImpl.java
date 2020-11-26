@@ -10,6 +10,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @Author zhangxw03
  * @Dat 2020-11-24 10:13
@@ -24,6 +26,12 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog getBlog(Integer id) {
         return blogDao.getBlog(id);
+    }
+
+    @Override
+    public List<Blog> list() {
+
+        return blogDao.list();
     }
 
 }

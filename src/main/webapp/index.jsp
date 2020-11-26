@@ -39,5 +39,8 @@
     <input type="submit" value="提交user数据">
 </form>
 
+<form action="/blog/list" method="post">
+    <input type="submit" value="测试list">
+</form>
 </body>
 </html>

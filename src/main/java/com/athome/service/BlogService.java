@@ -2,6 +2,8 @@ package com.athome.service;
 
 import com.athome.entity.Blog;
 
+import java.util.List;
+
 /**
  * @Author zhangxw03
  * @Dat 2020-11-24 10:13
@@ -10,4 +12,7 @@ import com.athome.entity.Blog;
 public interface BlogService {
 
     Blog getBlog(Integer id);
+
+    List<Blog> list();
+
 }
