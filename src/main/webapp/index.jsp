@@ -29,5 +29,15 @@
 </form>
 
 <a href="testget/101">测试get</a>
+
+<form action="submit3" method="POST">
+    姓名：<input type="text" name="name"/>
+    密码：<input type="text" name="password"/>
+    <%--SpringMvc支持级联属性获取值--%>
+    省：<input type="text" name="address.province">
+    市：<input type="text" name="address.city">
+    <input type="submit" value="提交user数据">
+</form>
+
 </body>
 </html>

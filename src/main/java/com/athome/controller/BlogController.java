@@ -1,6 +1,7 @@
 package com.athome.controller;
 
 import com.athome.entity.Blog;
+import com.athome.entity.User;
 import com.athome.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
@@ -57,5 +59,19 @@ public class BlogController {
     public String submit(@RequestParam(value = "name", required = false) String username, String password) {
         System.out.println(username + "===" + password);
         return "success";
+    }
+
+    @RequestMapping(value = "/submit2", method = RequestMethod.POST)
+    public String submit2(User user) {
+        System.out.println(user);
+        return "success";
+    }
+
+    @RequestMapping(value = "/submit3", method = RequestMethod.POST)
+    public ModelAndView submit3() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("username", "tom");
+        modelAndView.setViewName("success");
+        return modelAndView;
     }
 }
