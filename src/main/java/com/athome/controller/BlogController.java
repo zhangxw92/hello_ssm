@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Controller
@@ -68,7 +70,17 @@ public class BlogController {
     }
 
     @RequestMapping(value = "/submit3", method = RequestMethod.POST)
-    public ModelAndView submit3() {
+    public ModelAndView submit3(HttpServletRequest request) {
+        System.out.println(request.getCookies());
+        System.out.println(request.getParameter("name"));
+        System.out.println(request.getParameter("password"));
+        System.out.println(request.getMethod());
+        System.out.println(request.getRequestURL().toString());
+        System.out.println(request.getServerPort());
+        System.out.println(request.getServerName());
+        System.out.println(request.getParameterMap());
+        System.out.println(request.getRequestURI());
+        System.out.println(request.getContextPath());
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("username", "tom");
         modelAndView.setViewName("success");
