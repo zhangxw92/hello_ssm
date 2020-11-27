@@ -20,4 +20,7 @@ public interface BlogDao {
     int save(Blog blog);
 
     int update(Blog blog);
+
+    void remove(String id);
+
 }

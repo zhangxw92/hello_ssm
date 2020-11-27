@@ -18,5 +18,8 @@
         select id,name,id_no,book_id,sex from blog
     </select>
 
+  <delete id="remove">
+    delete from blog where id=#{id}
+  </delete>
 
 </mapper>

@@ -18,4 +18,6 @@ public interface BlogService {
     int save(Blog blog);
 
     int udpate(Blog blog);
+
+    void remove(String id);
 }

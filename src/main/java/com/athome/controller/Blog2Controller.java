@@ -67,7 +67,9 @@ public class Blog2Controller {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable("id") String id) {
-        System.out.println(id);
-        return "success";
+        System.out.println("11" + "--------" + id);
+        blogService.remove(id);
+        System.out.println("22");
+        return "redirect:list";
     }
 }

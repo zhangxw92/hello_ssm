@@ -47,4 +47,9 @@ public class BlogServiceImpl implements BlogService {
         return blogDao.update(blog);
     }
 
+    @Override
+    public void remove(String id) {
+        blogDao.remove(id);
+    }
+
 }
