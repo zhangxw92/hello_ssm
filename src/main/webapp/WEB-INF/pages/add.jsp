@@ -1,6 +1,7 @@
 <%@ page isELIgnored="false" language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +30,13 @@
                     </option>
                 </c:forEach>
             </select></td>
+        </tr>
+        <tr>
+            <td>SEX</td>
+            <td>
+                <input type="radio" name="sex" value="0"/>女
+                <input type="radio" name="sex" value="1"/>男
+            </td>
         </tr>
         <tr>
             <td><input type="submit" value="保存"></td>

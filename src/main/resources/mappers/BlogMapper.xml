@@ -3,15 +3,15 @@
 <mapper namespace="com.athome.dao.BlogDao">
 
   <insert id="save" parameterType="com.athome.entity.Blog">
-    insert into blog(id,name,id_no,book_id) values(null,#{name},#{idNo},#{bookId})
+    insert into blog(id,name,id_no,book_id,sex) values(null,#{name},#{idNo},#{bookId},#{sex})
   </insert>
 
   <select id="getBlog" resultType="com.athome.entity.Blog">
-        select id,name,id_no from Blog where id = #{id}
+        select id,name,id_no,book_id,sex from Blog where id = #{id}
     </select>
 
   <select id="list" resultType="com.athome.entity.Blog">
-        select id,name,id_no from blog
+        select id,name,id_no,book_id,sex from blog
     </select>
 
 

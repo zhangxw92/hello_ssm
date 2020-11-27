@@ -15,6 +15,7 @@ public class Blog {
     private Integer id;
     private String name;
     private String idNo;
+    private Integer sex;
     private Book book;
     private Integer bookId;
 }
