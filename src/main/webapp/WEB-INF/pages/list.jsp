@@ -14,6 +14,7 @@
         <th>ID</th>
         <th>NAME</th>
         <th>IDNO</th>
+        <th>SEX</th>
         <th>OPERATION(<a href="add">ADD</a>)</th>
     </tr>
 
@@ -22,6 +23,7 @@
             <td>${blog.id}</td>
             <td>${blog.name}</td>
             <td>${blog.idNo}</td>
+            <td>${blog.sex==0?'女':'男'}</td>
             <td>
                 <a href="update/${blog.id}">UPDATE</a>
                 <a href="delete/${blog.id}">delete</a>

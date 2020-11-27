@@ -41,4 +41,10 @@ public class BlogServiceImpl implements BlogService {
         return blogDao.save(blog);
     }
 
+    @Override
+    public int udpate(Blog blog) {
+
+        return blogDao.update(blog);
+    }
+
 }

@@ -49,9 +49,20 @@ public class Blog2Controller {
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String update(@PathVariable("id") String id) {
-        System.out.println(id);
-        return "success";
+    public String update(@PathVariable("id") Integer id, Model model) {
+        Blog blog = blogService.getBlog(id);
+        List<Book> list = bookDao.list();
+        model.addAttribute("books", list);
+        System.out.println("测试修改,跳转到编辑页" + list + "----" + blog);
+        model.addAttribute("blog", blog);
+        return "edit";
+    }
+
+    @RequestMapping(value = "/updateSave", method = RequestMethod.POST)
+    public String updateSave(Blog blog) {
+        System.out.println(blog);
+        int update = blogService.udpate(blog);
+        return "redirect:list";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

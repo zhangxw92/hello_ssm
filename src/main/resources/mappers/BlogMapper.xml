@@ -6,6 +6,10 @@
     insert into blog(id,name,id_no,book_id,sex) values(null,#{name},#{idNo},#{bookId},#{sex})
   </insert>
 
+  <update id="update" parameterType="com.athome.entity.Blog">
+    update blog set name=#{name},id_no=#{idNo},book_id=#{bookId},sex=#{sex} where id=#{id}
+  </update>
+
   <select id="getBlog" resultType="com.athome.entity.Blog">
         select id,name,id_no,book_id,sex from Blog where id = #{id}
     </select>
