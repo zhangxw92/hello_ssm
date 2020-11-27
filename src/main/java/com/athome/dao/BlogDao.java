@@ -17,4 +17,5 @@ public interface BlogDao {
 
     List<Blog> list();
 
+    int save(Blog blog);
 }

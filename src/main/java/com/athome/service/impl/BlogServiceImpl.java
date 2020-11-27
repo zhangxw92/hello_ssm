@@ -34,4 +34,11 @@ public class BlogServiceImpl implements BlogService {
         return blogDao.list();
     }
 
+    @Override
+    public int save(Blog blog) {
+        int id = blog.getBook().getId();
+        blog.setBookId(id);
+        return blogDao.save(blog);
+    }
+
 }

@@ -14,6 +14,7 @@
         <th>ID</th>
         <th>NAME</th>
         <th>IDNO</th>
+        <th>OPERATION(<a href="add">ADD</a>)</th>
     </tr>
 
     <c:forEach items="${blogs}" var="blog">
@@ -22,8 +23,8 @@
             <td>${blog.name}</td>
             <td>${blog.idNo}</td>
             <td>
-                <a href="">UPDATE</a>
-                <a href="">delete</a>
+                <a href="update/${blog.id}">UPDATE</a>
+                <a href="delete/${blog.id}">delete</a>
             </td>
         </tr>
     </c:forEach>

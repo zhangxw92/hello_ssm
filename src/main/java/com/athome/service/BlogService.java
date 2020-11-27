@@ -15,4 +15,5 @@ public interface BlogService {
 
     List<Blog> list();
 
+    int save(Blog blog);
 }
