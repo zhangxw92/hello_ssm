@@ -5,6 +5,9 @@
 <body>
 <h2>Hello World!</h2>
 
+<a href="/down">下载</a>
+
+<a href="/testJSON">测试json</a>
 
 <a href="getBlog">查询Blog</a>
 
