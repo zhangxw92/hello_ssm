@@ -5,6 +5,18 @@
 <body>
 <h2>Hello World!</h2>
 
+<form action="/upload2" method="post" enctype="multipart/form-data">
+    请选择文件：<input type="file" name="uploadFile"><br>
+    描述：<input type="text" name="descripe">
+    <input type="submit" value="上传2"><br>
+</form>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+    请选择文件：<input type="file" name="uploadFile"><br>
+    描述：<input type="text" name="descripe">
+    <input type="submit" value="上传"><br>
+</form>
+
 <a href="/down">下载</a>
 
 <a href="/testJSON">测试json</a>

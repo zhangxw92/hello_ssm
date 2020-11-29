@@ -11,12 +11,10 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Collection;
 import java.util.List;
 
@@ -49,4 +47,61 @@ public class JsonController {
         ResponseEntity<byte[]> entity = new ResponseEntity<byte[]>(b, map, HttpStatus.OK);
         return entity;
     }
+
+    /**
+     * 上传文件时还需要引入fileupload依赖
+     *
+     * @param descrepe
+     * @param uploadFile
+     * @return
+     */
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public String upload(String descrepe, MultipartFile uploadFile, HttpSession session) throws Exception {
+
+        //String name = uploadFile.getName();
+        String originalFilename = uploadFile.getOriginalFilename();
+        //System.out.println(name + "--" + originalFilename);
+
+        String path = session.getServletContext().getRealPath("photo") + File.separator + originalFilename;
+        System.out.println(path);
+        InputStream inputStream = uploadFile.getInputStream();
+
+        OutputStream outputStream = new FileOutputStream(new File(path));
+
+/*        int i = 0;
+        while ((i = inputStream.read()) != -1) {
+            System.out.println(i);
+            outputStream.write(i);
+        }*/
+
+        int i = 0;
+        byte[] b = new byte[1024];
+        while ((i = inputStream.read(b)) != -1) {
+            outputStream.write(b, 0, i);
+        }
+
+        outputStream.close();
+        inputStream.close();
+        return "success";
+    }
+
+    @RequestMapping(value = "/upload2", method = RequestMethod.POST)
+    public String upload2(String descrepe, MultipartFile uploadFile, HttpSession session) throws Exception {
+
+        //String name = uploadFile.getName();
+        String originalFilename = uploadFile.getOriginalFilename();
+        //System.out.println(name + "--" + originalFilename);
+
+        String path = session.getServletContext().getRealPath("photo") + File.separator + originalFilename;
+        System.out.println(path);
+        File file = new File(path);
+        uploadFile.transferTo(file);
+        return "success";
+    }
+
+//    public static void main(String[] args) {
+//        String path = "aa.dd.测试文件截取.jpg";
+//        System.out.println(path.lastIndexOf("."));
+//        System.out.println(path.substring(path.lastIndexOf(".")));
+//    }
 }
