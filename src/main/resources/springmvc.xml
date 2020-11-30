@@ -5,28 +5,42 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.athome" use-default-filters="false">
-        <context:include-filter type="annotation"
-                                expression="org.springframework.stereotype.Controller"></context:include-filter>
-    </context:component-scan>
+  <context:component-scan base-package="com.athome" use-default-filters="false">
+    <context:include-filter type="annotation"
+                            expression="org.springframework.stereotype.Controller"></context:include-filter>
+  </context:component-scan>
 
-    <!--SpringMVC在处理ajax请求的时候，需要依赖JackSon将对象转为json字符串，第一步加入JackSon依赖；第二部开启注解驱动；第三步在方法上加上@ResponBody注解-->
-    <!--开启SpringMVC注解驱动-->
-    <mvc:annotation-driven/>
+  <!--SpringMVC在处理ajax请求的时候，需要依赖JackSon将对象转为json字符串，第一步加入JackSon依赖；第二部开启注解驱动；第三步在方法上加上@ResponBody注解-->
+  <!--开启SpringMVC注解驱动-->
+  <mvc:annotation-driven/>
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/pages/"></property>
-        <property name="suffix" value=".jsp"></property>
-    </bean>
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value="/WEB-INF/pages/"></property>
+    <property name="suffix" value=".jsp"></property>
+  </bean>
 
-    <!--处理静态资源-->
-    <mvc:default-servlet-handler/>
+  <!--处理静态资源-->
+  <mvc:default-servlet-handler/>
 
-    <!--配置文件上传处理器-->
-    <!--文件上传的时候是file类型，但是接收参数是MultipartFile，中间这个转换过程需要由这个解析器来完成-->
-    <!--multipartResolver id必须是这个-->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="defaultEncoding" value="UTF-8"></property>
-        <property name="maxUploadSize" value="888888"></property>
-    </bean>
+  <!--配置文件上传处理器-->
+  <!--文件上传的时候是file类型，但是接收参数是MultipartFile，中间这个转换过程需要由这个解析器来完成-->
+  <!--multipartResolver id必须是这个-->
+  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="defaultEncoding" value="UTF-8"></property>
+    <property name="maxUploadSize" value="888888"></property>
+  </bean>
+
+  <!--配置拦截器-->
+  <!--/* ： 匹配一级，即 /add , /query 等
+      /** ： 匹配多级，即 /add , /add/user, /add/user/user… 等-->
+  <mvc:interceptors>
+    <mvc:interceptor>
+      <mvc:mapping path="/**"/>
+      <bean class="com.athome.interceptor.HelloInterceptor"></bean>
+    </mvc:interceptor>
+    <mvc:interceptor>
+      <mvc:mapping path="/blog/*"/>
+      <bean class="com.athome.interceptor.Hello2Interceptor"></bean>
+    </mvc:interceptor>
+  </mvc:interceptors>
 </beans>
