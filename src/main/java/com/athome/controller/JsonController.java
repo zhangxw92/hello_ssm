@@ -24,6 +24,11 @@ public class JsonController {
     @Autowired
     private BlogService blogService;
 
+    /**
+     * 当使用@ResponseBody注解时，将会给浏览器响应文本内容，
+     * SpringMvc需要依赖JackSon将文本以json的格式返回给浏览器
+     * @return
+     */
     @RequestMapping(value = "/testJSON", method = RequestMethod.GET)
     @ResponseBody
     public Collection<Blog> testJson() {
@@ -31,6 +36,15 @@ public class JsonController {
         return list;
     }
 
+    /**
+     * 下载文件分为三步：1、获取要下载文件的路径；
+     * 2、构建一个文件输入流，将文件读到内存中；
+     * 3、利用ResponEntity将文件以附件的形式下载下来。
+     *
+     * @param httpSession
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("/down")
     public ResponseEntity<byte[]> down(HttpSession httpSession) throws IOException {
 
@@ -49,7 +63,13 @@ public class JsonController {
     }
 
     /**
-     * 上传文件时还需要引入fileupload依赖
+     * 注：上传文件时还需要引入fileupload依赖
+     * 上传文件时，1、将要上传的对象用MutilpartFile对象接收，使用该对象
+     * 可以获取到对象的所有信息；
+     * 2、使用MutilpartFile构造一个输入流，将上传上来的文件写进内存；
+     * 3、使用文件输出流将文件写到服务器的指定目录中。
+     * 4、因为文件上传时是file类型，接收的时候使用MultipartFile接收，这
+     * 中间需要配置CommonsMultipartResolver这个解析器进行解释处理。
      *
      * @param descrepe
      * @param uploadFile
