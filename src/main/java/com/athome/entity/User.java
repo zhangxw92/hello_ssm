@@ -13,6 +13,8 @@ public class User {
     private String password;
 
     private Address address;
+    //1-男 2-女 3-未知
+    private Integer sex;
 
     @Override
     public String toString() {

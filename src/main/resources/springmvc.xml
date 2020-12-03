@@ -34,10 +34,10 @@
   <!--/* ： 匹配一级，即 /add , /query 等
       /** ： 匹配多级，即 /add , /add/user, /add/user/user… 等-->
   <mvc:interceptors>
-    <mvc:interceptor>
+<!--    <mvc:interceptor>
       <mvc:mapping path="/**"/>
       <bean class="com.athome.interceptor.HelloInterceptor"></bean>
-    </mvc:interceptor>
+    </mvc:interceptor>-->
     <mvc:interceptor>
       <mvc:mapping path="/blog/*"/>
       <bean class="com.athome.interceptor.Hello2Interceptor"></bean>

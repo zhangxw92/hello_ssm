@@ -5,6 +5,13 @@
 <body>
 <h2>Hello World!</h2>
 
+
+<form action="/helloStrategy/test" method="post">
+    姓名：<input type="text" name="name">
+    性别：<input type="text" name="sex">
+    <input type="submit" value="提交">
+</form>
+
 <form action="/upload2" method="post" enctype="multipart/form-data">
     请选择文件：<input type="file" name="uploadFile"><br>
     描述：<input type="text" name="descripe">
