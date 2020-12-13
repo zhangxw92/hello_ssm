@@ -16,7 +16,8 @@ public class Decorator extends Drink {
      */
     @Override
     public float cost() {
-
+        System.out.println("super.getPrice() : " + super.getPrice());
+        System.out.println("drink.cost() : " + drink.cost());
         return super.getPrice() + drink.cost();
     }
 
