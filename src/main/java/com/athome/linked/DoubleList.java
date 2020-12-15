@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @Author zhangxw03
  * @Dat 2020-12-15 8:59
- * @Describe
+ * @Describe 这个链表初始化的时候虚拟两个节点分别是head和tail
  */
 public class DoubleList<E> {
 
