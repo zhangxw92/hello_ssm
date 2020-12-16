@@ -38,6 +38,36 @@ public class LinkedList<E> {
         size++;
     }
 
+    public void remove(E e) {
+
+        for (Node n = head; n != null; n = n.next) {
+
+            if (e.equals(n.e)) {
+                Node<E> ele = n;
+                Node<E> pre = n.pre;
+                Node<E> next = n.next;
+
+                //判断是否是第一个元素
+                if (pre == null) {
+                    head = next;
+                    next.pre = null;
+                    n.next = null;
+                    //判断是否是最后一个员
+                } else if (next == null) {
+                    tail = pre;
+                    pre.next = null;
+                    n.pre = null;
+                } else {
+                    //删除的是中间节点
+                    pre.next = next;
+                    next.pre = pre;
+                    n.pre = null;
+                    n.next = null;
+                }
+            }
+        }
+    }
+
     private static class Node<E> {
         Node<E> pre;
         Node<E> next;
