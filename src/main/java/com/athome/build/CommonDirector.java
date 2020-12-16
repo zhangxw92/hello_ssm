@@ -14,6 +14,9 @@ public class CommonDirector {
     }
 
     public Car build() {
+        carAbstractBuilder.build01();
+        carAbstractBuilder.build02();
+        carAbstractBuilder.build03();
         return carAbstractBuilder.build();
     }
 }

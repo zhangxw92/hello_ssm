@@ -7,19 +7,25 @@ package com.athome.build;
  */
 public class BMWBuilder extends CarAbstractBuilder {
 
+    public BMWBuilder() {
+        super();
+    }
 
     @Override
     protected void build01() {
+        car.setHead("车胎");
         System.out.println("车胎");
     }
 
     @Override
     protected void build02() {
+        car.setBody("车身");
         System.out.println("车身");
     }
 
     @Override
     protected void build03() {
+        car.setTail("发动机");
         System.out.println("发动机");
     }
 }

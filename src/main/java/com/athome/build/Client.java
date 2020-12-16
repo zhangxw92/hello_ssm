@@ -12,6 +12,9 @@ public class Client {
 
         CommonDirector commonDirector = new CommonDirector(carAbstractBuilder);
 
-        commonDirector.build();
+        Car build = commonDirector.build();
+        System.out.println(build.getHead());
+        System.out.println(build.getBody());
+        System.out.println(build.getTail());
     }
 }

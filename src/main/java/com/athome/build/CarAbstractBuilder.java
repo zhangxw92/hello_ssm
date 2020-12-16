@@ -7,6 +7,12 @@ package com.athome.build;
  */
 public abstract class CarAbstractBuilder {
 
+    protected Car car;
+
+    public CarAbstractBuilder() {
+        car = new Car();
+    }
+
     //车胎
     protected abstract void build01();
 
@@ -17,9 +23,6 @@ public abstract class CarAbstractBuilder {
     protected abstract void build03();
 
     public Car build() {
-        build01();
-        build02();
-        build03();
-        return new Car();
+        return car;
     }
 }
