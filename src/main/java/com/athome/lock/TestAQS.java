@@ -17,7 +17,7 @@ public class TestAQS {
     }
 
     public static void test() {
-        Lock lock = new ReentrantLock(true);
+        Lock lock = new ReentrantLock();
 
         lock.lock();
 
