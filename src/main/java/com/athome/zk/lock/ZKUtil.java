@@ -1,6 +1,9 @@
 package com.athome.zk.lock;
 
 import org.I0Itec.zkclient.ZkClient;
+import org.junit.Test;
+
+import java.util.List;
 
 /**
  * @Author zhangxw03
@@ -14,4 +17,16 @@ public class ZKUtil {
         ZkClient zkClient = new ZkClient(connect);
         return zkClient;
     }
+
+    @Test
+    public void test() {
+        ZkClient connection = ZKUtil.getConnection();
+
+        List<String> children = connection.getChildren("/lock");
+        for (String child : children) {
+            System.out.println(child);
+        }
+
+    }
+
 }
