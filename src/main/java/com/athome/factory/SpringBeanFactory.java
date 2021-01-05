@@ -1,5 +1,7 @@
 package com.athome.factory;
 
+import com.alibaba.druid.pool.DruidDataSource;
+import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,9 +17,9 @@ public class SpringBeanFactory {
         return applicationContext.getBean((Class<T>) clazz);
     }
 
-    public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Object dataSource = applicationContext.getBean("dataSource");
-        System.out.println(dataSource);
+    @Test
+    public void test() {
+        DruidDataSource bean = SpringBeanFactory.getBean(DruidDataSource.class);
+        System.out.println(bean);
     }
 }
