@@ -12,7 +12,7 @@ import java.util.concurrent.CountDownLatch;
 public class TestZKHightNatureLock {
 
     private volatile int size = 0;
-    private static ZKHightNatureLock zkSimpleLock = new ZKHightNatureLock("/zhang");
+    private static ZKHightNatureLock zkSimpleLock = new ZKHightNatureLock("/wang");
     private static CountDownLatch c = new CountDownLatch(10);
 
     public void add() {
