@@ -28,12 +28,12 @@ public class JsonController {
     /**
      * 当使用@ResponseBody注解时，将会给浏览器响应文本内容，
      * SpringMvc需要依赖JackSon将文本以json的格式返回给浏览器
+     *
      * @return
      */
     @RequestMapping(value = "/testJSON", method = RequestMethod.GET)
     @ResponseBody
     public Collection<Blog> testJson() {
-        DispatcherServlet
         List<Blog> list = blogService.list();
         return list;
     }
