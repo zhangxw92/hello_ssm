@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.http.HttpSession;
 import java.io.*;
@@ -27,6 +28,7 @@ public class JsonController {
     /**
      * 当使用@ResponseBody注解时，将会给浏览器响应文本内容，
      * SpringMvc需要依赖JackSon将文本以json的格式返回给浏览器
+     *
      * @return
      */
     @RequestMapping(value = "/testJSON", method = RequestMethod.GET)
