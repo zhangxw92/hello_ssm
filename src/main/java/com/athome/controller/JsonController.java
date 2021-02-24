@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.http.HttpSession;
 import java.io.*;
@@ -32,6 +33,7 @@ public class JsonController {
     @RequestMapping(value = "/testJSON", method = RequestMethod.GET)
     @ResponseBody
     public Collection<Blog> testJson() {
+        DispatcherServlet
         List<Blog> list = blogService.list();
         return list;
     }
