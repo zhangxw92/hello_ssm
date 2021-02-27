@@ -16,6 +16,10 @@ public class User {
     //1-男 2-女 3-未知
     private Integer sex;
 
+    public User(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "User{" +
