@@ -11,18 +11,18 @@
     初始化Spring容器
     -->
 
+    <!--【最先加载】用来设置上下文参数，servletContxt初始化的时候第一个被加载的标签-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+        
     <!--监听器 出现BeanFactory not initialized or already closed表示没有找到Spring的配置文件-->
     <!--在web工程中Spring的配置文件是有默认位置和默认名称的，默认位置在WEB-INF下，默认名称叫applicationContext.xml-->
     <!--【第二顺位】-->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
-    <!--【最先加载】用来设置上下文参数，servletContxt初始化的时候第一个被加载的标签-->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml</param-value>
-    </context-param>
 
     <!-- 注册中央调度器 -->
     <servlet>
